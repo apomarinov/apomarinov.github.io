@@ -8,7 +8,7 @@
     <link rel="icon" type="image/png" href="favicon.svg"/>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300&family=Titillium+Web:wght@400;600;700;900&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300&family=Manrope:wght@400;600;700;900&display=swap"
           rel="stylesheet">
     <title>Apostol Marinov - Software Engineer</title>
     <script src="https://cdn.tailwindcss.com"></script>
@@ -37,7 +37,7 @@
     <style>
         * {
             font-size: 18px;
-            font-family: "Titillium Web", sans-serif;
+            font-family: "Manrope", sans-serif;
             font-weight: 400;
             font-style: normal;
         }
@@ -50,23 +50,31 @@
         }
 
         .semibold {
-            font-family: "Titillium Web", sans-serif;
+            font-family: "Manrope", sans-serif;
             font-weight: 600;
             font-style: normal;
         }
 
         .bold {
-            font-family: "Titillium Web", sans-serif;
+            font-family: "Manrope", sans-serif;
             font-weight: 700;
             font-style: normal;
         }
 
         .black {
-            font-family: "Titillium Web", sans-serif;
+            font-family: "Manrope", sans-serif;
             font-weight: 900;
             font-style: normal;
         }
 
+        .exp p {
+            font-size: 16px;
+        }
+
+        .exp {
+            margin-top: 0.2rem;
+            margin-bottom: 0.2rem;
+        }
 
         header {
             background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
@@ -246,13 +254,13 @@
                         <path d="m478.33 433.6-90-218a22 22 0 0 0-40.67 0l-90 218a22 22 0 1 0 40.67 16.79L316.66 406h102.67l18.33 44.39A22 22 0 0 0 458 464a22 22 0 0 0 20.32-30.4zM334.83 362 368 281.65 401.17 362zm-66.99-19.08a22 22 0 0 0-4.89-30.7c-.2-.15-15-11.13-36.49-34.73 39.65-53.68 62.11-114.75 71.27-143.49H330a22 22 0 0 0 0-44H214V70a22 22 0 0 0-44 0v20H54a22 22 0 0 0 0 44h197.25c-9.52 26.95-27.05 69.5-53.79 108.36-31.41-41.68-43.08-68.65-43.17-68.87a22 22 0 0 0-40.58 17c.58 1.38 14.55 34.23 52.86 83.93.92 1.19 1.83 2.35 2.74 3.51-39.24 44.35-77.74 71.86-93.85 80.74a22 22 0 1 0 21.07 38.63c2.16-1.18 48.6-26.89 101.63-85.59 22.52 24.08 38 35.44 38.93 36.1a22 22 0 0 0 30.75-4.9z"></path>
                     </svg>
                     <div class="flex gap-3 flex-wrap">
-                        <div class="rounded-lg px-2 relative overflow-hidden">
-                            <div class="absolute left-0 top-0 bg-dmgray-0 bg-opacity-80 w-full h-full"></div>
-                            <span class="relative text-dmgray-3">Bulgarian</span>
-                        </div>
                         <div class="rounded-lg px-2 relative overflow-hidden border-2 border-opacity-80 border-dmgray-0">
                             <div class="absolute left-0 top-0 bg-dmgray-0 bg-opacity-80 w-full h-full"></div>
                             <span class="relative text-dmgray-3">English</span>
+                        </div>
+                        <div class="rounded-lg px-2 relative overflow-hidden">
+                            <div class="absolute left-0 top-0 bg-dmgray-0 bg-opacity-80 w-full h-full"></div>
+                            <span class="relative text-dmgray-3">Bulgarian</span>
                         </div>
                         <div class="rounded-lg px-2 relative overflow-hidden border-2 border-opacity-80 border-dmgray-0">
                             <div class="absolute left-0 top-0 bg-dmgray-0 bg-opacity-80 w-[38%] h-full"></div>
@@ -270,15 +278,15 @@
                 management and team leading.</h2>
             <div class="flex flex-col items-start gap-2 w-full">
                 <div class="w-full">
-                    <h3 class="font-semibold text-xl text-dmgray-3">Technical Skills</h3>
-                    <div class="border-b-[1px] border-dmgray-0 w-full mb-2"></div>
+                    <h3 class="font-bold text-xl text-dmgray-3">Technical Skills</h3>
+                    <div class="border-b-[1px] border-dmgray-0 w-full"></div>
                 </div>
-                <div class="flex w-full gap-2 items-center max-sm:flex-col">
+                <div class="flex w-full gap-1 sm:gap-2 items-center max-sm:flex-col">
                     <span class="whitespace-nowrap w-fit mg:pr-5 relative">
                         <span class="hidden sm:block invisible">Infra & Cloud</span>
                         <span class="sm:absolute left-0 top-0">Language</span>
                     </span>
-                    <div class="flex gap-2 flex-wrap w-full items-start">
+                    <div class="flex gap-1 sm:gap-2 flex-wrap w-full items-start">
                         <div class="rounded-lg max-sm:pb-0 max-sm:pb-0.5 max-sm:leading-none px-2 relative overflow-hidden border-2 border-dmgray-0">
                             <span class="relative text-dmgray-3 max-sm:text-xs">JavaScript</span>
                         </div>
@@ -296,12 +304,12 @@
                         </div>
                     </div>
                 </div>
-                <div class="flex w-full gap-2 items-center max-sm:flex-col">
+                <div class="flex w-full gap-1 sm:gap-2 items-center max-sm:flex-col">
                     <span class="whitespace-nowrap w-fit mg:pr-5 relative">
                         <span class="hidden sm:block invisible">Infra & Cloud</span>
                         <span class="sm:absolute left-0 top-0">Frameworks</span>
                     </span>
-                    <div class="flex gap-2 flex-wrap w-full items-start">
+                    <div class="flex gap-1 sm:gap-2 flex-wrap w-full items-start">
                         <div class="rounded-lg max-sm:pb-0 max-sm:pb-0.5 max-sm:leading-none px-2 relative overflow-hidden border-2 border-dmgray-0">
                             <span class="relative text-dmgray-3 max-sm:text-xs">React</span>
                         </div>
@@ -316,12 +324,12 @@
                         </div>
                     </div>
                 </div>
-                <div class="flex w-full gap-2 items-center max-sm:flex-col">
+                <div class="flex w-full gap-1 sm:gap-2 items-center max-sm:flex-col">
                     <span class="whitespace-nowrap w-fit mg:pr-5 relative">
                         <span class="hidden sm:block invisible">Infra & Cloud</span>
                         <span class="sm:absolute left-0 top-0">Databases</span>
                     </span>
-                    <div class="flex gap-2 flex-wrap w-full items-start">
+                    <div class="flex gap-1 sm:gap-2 flex-wrap w-full items-start">
                         <div class="rounded-lg max-sm:pb-0 max-sm:pb-0.5 max-sm:leading-none px-2 relative overflow-hidden border-2 border-dmgray-0">
                             <span class="relative text-dmgray-3 max-sm:text-xs">PostgreSQL</span>
                         </div>
@@ -339,12 +347,12 @@
                         </div>
                     </div>
                 </div>
-                <div class="flex w-full gap-2 items-center max-sm:flex-col">
+                <div class="flex w-full gap-1 sm:gap-2 items-center max-sm:flex-col">
                     <span class="whitespace-nowrap w-fit mg:pr-5 relative">
                         <span class="hidden sm:block invisible">Infra & Cloud</span>
                         <span class="sm:absolute left-0 top-0">Infra & Cloud</span>
                     </span>
-                    <div class="flex gap-2 flex-wrap w-full items-start">
+                    <div class="flex gap-1 sm:gap-2 flex-wrap w-full items-start">
                         <div class="rounded-lg max-sm:pb-0 max-sm:pb-0.5 max-sm:leading-none px-2 relative overflow-hidden border-2 border-dmgray-0">
                             <span class="relative text-dmgray-3 max-sm:text-xs">GCP</span>
                         </div>
@@ -359,12 +367,12 @@
                         </div>
                     </div>
                 </div>
-                <div class="flex w-full gap-2 items-center max-sm:flex-col">
+                <div class="flex w-full gap-1 sm:gap-2 items-center max-sm:flex-col">
                     <span class="whitespace-nowrap w-fit mg:pr-5 relative">
                         <span class="hidden sm:block invisible">Infra & Cloud</span>
                         <span class="sm:absolute left-0 top-0">CI/CD</span>
                     </span>
-                    <div class="flex gap-2 flex-wrap w-full items-start">
+                    <div class="flex gap-1 sm:gap-2 flex-wrap w-full items-start">
                         <div class="rounded-lg max-sm:pb-0 max-sm:pb-0.5 max-sm:leading-none px-2 relative overflow-hidden border-2 border-dmgray-0">
                             <span class="relative text-dmgray-3 max-sm:text-xs">GitHub</span>
                         </div>
@@ -376,12 +384,12 @@
                         </div>
                     </div>
                 </div>
-                <div class="flex w-full gap-2 items-center max-sm:flex-col">
+                <div class="flex w-full gap-1 sm:gap-2 items-center max-sm:flex-col">
                     <span class="whitespace-nowrap w-fit mg:pr-5 relative">
                         <span class="hidden sm:block invisible">Infra & Cloud</span>
                         <span class="sm:absolute left-0 top-0">Testing</span>
                     </span>
-                    <div class="flex gap-2 flex-wrap w-full items-start">
+                    <div class="flex gap-1 sm:gap-2 flex-wrap w-full items-start">
                         <div class="rounded-lg max-sm:pb-0 max-sm:pb-0.5 max-sm:leading-none px-2 relative overflow-hidden border-2 border-dmgray-0">
                             <span class="relative text-dmgray-3 max-sm:text-xs">Jest</span>
                         </div>
@@ -396,11 +404,11 @@
             </div>
             <div class="flex flex-col items-start gap-2 w-full">
                 <div class="w-full">
-                    <h3 class="font-semibold text-xl text-dmgray-3">Soft Skills</h3>
-                    <div class="border-b-[1px] border-dmgray-0 w-full mb-2"></div>
+                    <h3 class="font-bold text-xl text-dmgray-3">Soft Skills</h3>
+                    <div class="border-b-[1px] border-dmgray-0 w-full"></div>
                 </div>
-                <div class="flex w-full gap-2 items-center max-sm:flex-col">
-                    <div class="flex gap-2 flex-wrap w-full items-start">
+                <div class="flex w-full gap-1 sm:gap-2 items-center max-sm:flex-col">
+                    <div class="flex gap-1 sm:gap-2 flex-wrap w-full items-start">
                         <div class="rounded-lg max-sm:pb-0 max-sm:pb-0.5 max-sm:leading-none px-2 relative overflow-hidden border-2 border-dmgray-0">
                             <span class="relative text-dmgray-3 max-sm:text-xs">Client Communication</span>
                         </div>
@@ -415,17 +423,17 @@
             </div>
             <div class="flex flex-col items-start gap-4 w-full">
                 <div class="w-full">
-                    <h3 class="font-semibold text-xl text-dmgray-3">Experience</h3>
-                    <div class="border-b-[1px] border-dmgray-0 w-full mb-2"></div>
+                    <h3 class="font-bold text-xl text-dmgray-3">Experience</h3>
+                    <div class="border-b-[1px] border-dmgray-0 w-full"></div>
                 </div>
                 <div class="flex w-full">
                     <div class="flex flex-col w-full group">
                         <div class="flex w-full justify-between text-dmgray-3 max-xs:flex-col">
-                            <span class="font-semibold">Lead Engineer</span>
+                            <span class="font-bold">Lead Engineer</span>
                             <span class="max-xs:text-sm"><a
                                     href="https://www.linkedin.com/company/prodigy9/mycompany/"
                                     target="_blank"
-                                    class="hover:text-blue-400 max-xs:text-sm font-semibold">PRODIGY9</a>, Thailand</span>
+                                    class="hover:text-blue-400 max-xs:text-sm">PRODIGY9</a>, Thailand</span>
                         </div>
                         <div class="text-dmgray-05 mb-1 text-xs">August 2021 - Present</div>
                         <div class="flex flex-col relative exp text-dmgray-3">
@@ -456,11 +464,11 @@
                 <div class="flex w-full mt-1">
                     <div class="flex flex-col w-full group">
                         <div class="flex w-full justify-between text-dmgray-3 max-xs:flex-col">
-                            <span class="font-semibold">Full Stack Developer</span>
+                            <span class="font-bold">Full Stack Developer</span>
                             <span class="max-xs:text-sm"><a
                                     href="https://www.linkedin.com/company/fazwaz/"
                                     target="_blank"
-                                    class="hover:text-blue-400 max-xs:text-sm font-semibold">FazWaz</a>, Thailand</span>
+                                    class="hover:text-blue-400 max-xs:text-sm">FazWaz</a>, Thailand</span>
                         </div>
                         <div class="text-dmgray-05 mb-1 text-xs">August 2020 - August 2021</div>
                         <div class="flex flex-col relative exp text-dmgray-3">
@@ -484,10 +492,10 @@
                 <div class="flex w-full mt-1">
                     <div class="flex flex-col w-full group">
                         <div class="flex w-full justify-between text-dmgray-3 max-xs:flex-col">
-                            <span class="font-semibold">Full Stack Developer</span>
+                            <span class="font-bold">Full Stack Developer</span>
                             <span class="max-xs:text-sm"><a
                                     href="https://www.linkedin.com/company/redplanethotels/"
-                                    target="_blank" class="hover:text-blue-400 max-xs:text-sm font-semibold">Red Planet Hotels</a>, Thailand</span>
+                                    target="_blank" class="hover:text-blue-400 max-xs:text-sm">Red Planet Hotels</a>, Thailand</span>
                         </div>
                         <div class="text-dmgray-05 mb-1 text-xs">April 2020 - July 2020</div>
                         <div class="flex flex-col relative exp">
@@ -513,7 +521,7 @@
                 <div class="flex w-full mt-1">
                     <div class="flex flex-col w-full group">
                         <div class="flex w-full justify-between text-dmgray-3 max-xs:flex-col">
-                            <span class="font-semibold">Backend Developer</span>
+                            <span class="font-bold">Backend Developer</span>
                             <span class="max-xs:text-sm">Radius, Thailand</span>
                         </div>
                         <div class="text-dmgray-05 mb-1 text-xs">July 2019 - April 2020</div>
@@ -537,11 +545,11 @@
                 <div class="flex w-full mt-1">
                     <div class="flex flex-col w-full group">
                         <div class="flex w-full justify-between text-dmgray-3 max-xs:flex-col">
-                            <span class="font-semibold">Backend Developer</span>
+                            <span class="font-bold">Backend Developer</span>
                             <span class="max-xs:text-sm"><a
                                     href="https://www.linkedin.com/company/credoweb/"
                                     target="_blank"
-                                    class="hover:text-blue-400 font-semibold max-xs:text-sm">Credoweb</a>, Bulgaria</span>
+                                    class="hover:text-blue-400 max-xs:text-sm">Credoweb</a>, Bulgaria</span>
                         </div>
                         <div class="text-dmgray-05 mb-1 text-xs">June 2016 - July 2019</div>
                         <div class="flex flex-col relative exp">
@@ -568,7 +576,7 @@
                 <div class="flex w-full mt-1">
                     <div class="flex flex-col w-full group">
                         <div class="flex w-full justify-between text-dmgray-3 max-xs:flex-col">
-                            <span class="font-semibold">Game Developer</span>
+                            <span class="font-bold">Game Developer</span>
                             <span class="max-xs:text-sm">Masthead Studios, Bulgaria</span>
                         </div>
                         <div class="text-dmgray-05 mb-1 text-xs">November 2015 - May 2016</div>
@@ -583,10 +591,11 @@
                 <div class="flex w-full mt-1">
                     <div class="flex flex-col w-full group">
                         <div class="flex w-full justify-between text-dmgray-3 max-xs:flex-col">
-                            <span class="font-semibold">Full Stack Developer</span>
+                            <span class="font-bold">Full Stack Developer</span>
                             <span class="max-xs:text-sm"><a
                                     href="https://www.linkedin.com/company/melon-ad/"
-                                    target="_blank" class="hover:text-blue-400 max-xs:text-sm font-semibold">Melon</a>, Bulgaria</span>
+                                    target="_blank"
+                                    class="hover:text-blue-400 max-xs:text-sm">Melon</a>, Bulgaria</span>
                         </div>
                         <div class="text-dmgray-05 mb-1 text-xs">July 2015 - October 2015</div>
                         <div class="flex flex-col relative exp">
@@ -602,10 +611,10 @@
                 <div class="flex w-full mt-1">
                     <div class="flex flex-col w-full group">
                         <div class="flex w-full justify-between text-dmgray-3 max-xs:flex-col">
-                            <span class="font-semibold">Full Stack Developer</span>
+                            <span class="font-bold">Full Stack Developer</span>
                             <span class="max-xs:text-sm"><a
                                     href="https://www.linkedin.com/company/interactive-share-ltd/"
-                                    target="_blank" class="hover:text-blue-400 max-xs:text-sm font-semibold">Interactive Share</a>, Bulgaria</span>
+                                    target="_blank" class="hover:text-blue-400 max-xs:text-sm">Interactive Share</a>, Bulgaria</span>
                         </div>
                         <div class="text-dmgray-05 mb-1 text-xs">June 2014 - June 2015</div>
                         <div class="flex flex-col relative exp">
@@ -631,7 +640,7 @@
                 </div>
                 <div class="w-full">
                     <div class="border-b-[1px] border-dmgray-0 w-full mt-3"></div>
-                    <div class="font-semibold text-dmgray-3">References available upon request</div>
+                    <div class="font-bold text-dmgray-3">References available upon request</div>
                 </div>
             </div>
         </main>
