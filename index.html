@@ -30,6 +30,9 @@
                         xs: '440px',
                         mg: '992px',
                     },
+                    backdropBlur: {
+                        xs: '2px',
+                    }
                 },
             },
         }
@@ -40,6 +43,10 @@
             font-family: "Manrope", sans-serif;
             font-weight: 400;
             font-style: normal;
+        }
+
+        ::selection {
+            background: rgba(35, 166, 213, 0.3);
         }
 
         .quicksand {
@@ -69,6 +76,7 @@
 
         .exp p {
             font-size: 16px;
+            line-height: 1.6;
         }
 
         .exp {
@@ -82,7 +90,7 @@
             animation: gradient 15s ease infinite;
             position: relative;
             overflow: hidden;
-            min-height: 427px;
+            min-height: 350px;
         }
 
         @keyframes gradient {
@@ -102,7 +110,7 @@
             border-radius: 1000% 1000% 0 0;
             position: absolute;
             width: 250%;
-            height: 9em;
+            height: 7em;
             bottom: 0;
             animation: wave 10s -3s linear infinite;
             transform: translate3d(0, 0, 0);
@@ -111,12 +119,44 @@
             z-index: 0;
         }
 
-        @media (max-width: 992px) {
-            .wave {
-                bottom: -1rem;
-            }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
         }
 
+        .glass-card:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .skill-tag {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 0.15rem 0.8rem;
+            border-radius: 2rem;
+            transition: all 0.3s ease;
+            cursor: default;
+        }
+
+        .skill-tag:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-1px);
+        }
+
+        .section-fade {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeUp 0.5s ease forwards;
+        }
+
+        @keyframes fadeUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
 
         .wave:nth-of-type(2) {
             bottom: -1.25em;
@@ -152,7 +192,45 @@
             }
         }
 
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .show-more {
+            margin-top: 0.5rem;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        a {
+            transition: all 0.3s ease;
+        }
+
+        .profile-image {
+            transition: all 0.5s ease;
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+        }
+
+        .profile-image:hover {
+            transform: scale(1.02);
+            box-shadow: 0 20px 40px -20px rgba(0, 0, 0, 0.6);
+        }
+
         @media (max-width: 992px) {
+            .wave {
+                bottom: -1rem;
+            }
             #tutorial {
                 -webkit-animation: slide-bottom 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) infinite alternate both;
                 animation: slide-bottom 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) infinite alternate both;
@@ -184,15 +262,15 @@
     </style>
 </head>
 <body class="container lg:mx-auto max-lg:max-w-[100vw] bg-dmgray-3 min-h-[100dvh] h-[100dvh] flex flex-col">
-<header class="w-full h-fit mg:h-[20rem] pb-14">
-    <div class="absolute w-full h-fit bottom-7">
+<header class="w-full h-fit mg:h-[20rem] pb-14 relative lg:rounded-b-xl">
+    <div class="absolute w-full h-fit bottom-0">
         <div class="wave"></div>
         <div class="wave"></div>
         <div class="wave"></div>
     </div>
     <div class="flex z-[1] relative max-mg:flex-col max-mg:gap-5 items-center justify-between h-full max-mg:px-3 max-mg:py-7 py-10">
         <div class="flex justify-center mg:w-1/3">
-            <img src="/me.webp" alt="me" class="rounded-full w-[9rem] h-[9rem] mg:w-[10rem] mg:h-[10rem] object-cover">
+            <img src="/me.webp" alt="me" class="lg:ml-5 profile-image rounded-full w-[9rem] h-[9rem] mg:w-[10rem] mg:h-[10rem] object-cover">
         </div>
         <div class="flex flex-col max-mg:text-center text-white grow gap-5 mg:pl-10">
             <h1 class="font-thin max-mg:text-5xl text-7xl quicksand">Apostol Marinov</h1>
@@ -201,49 +279,52 @@
     </div>
 </header>
 <div class="grow relative">
-    <div class="absolute w-full flex flex-col mg:flex-row h-fit -top-[5rem] left-0">
-        <div class="w-full mg:w-1/3 max-mg:h-fit overflow-y-hidden">
-            <div class="w-full h-[5rem] overflow-hidden">
-                <canvas id="tutorial"></canvas>
-            </div>
-            <aside
-                    class="bg-dmgray-21 w-full h-full max-mg:py-6 px-4 mg:px-7 flex items-center justify-start flex-col gap-7 max-mg:h-fit">
-                <div class="flex flex-col gap-4 sm:max-mg:flex-row w-fit sm:max-mg:w-full sm:max-mg:justify-evenly">
-                    <div class="flex gap-5 items-center max-sm:w-fit">
-                        <div class="!p-0.5 !max-w-[40px] !max-h-[40px] rounded-full bg-dmgray-0">
-                            <svg width="36px" height="36px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M12 21C15.5 17.4 19 14.1764 19 10.2C19 6.22355 15.866 3 12 3C8.13401 3 5 6.22355 5 10.2C5 14.1764 8.5 17.4 12 21Z" class="stroke-dmgray-3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                <path d="M12 13C13.6569 13 15 11.6569 15 10C15 8.34315 13.6569 7 12 7C10.3431 7 9 8.34315 9 10C9 11.6569 10.3431 13 12 13Z" class="stroke-dmgray-3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <div class="absolute w-full flex flex-col mg:flex-row h-fit -top-[3rem] left-0 gap-6 px-5">
+        <div class="w-full mg:w-1/3 max-mg:h-fit mb-5">
+            <aside class="glass-card rounded-xl w-full h-full max-mg:py-6 p-6 mg:p-7 !pt-4 flex items-center justify-start flex-col gap-0 max-mg:h-fit">
+                <div class="w-full">
+                    <h3 class="font-bold text-xl text-white mb-2">Contacts</h3>
+                    <div class="border-b-[1px] border-dmgray-0 w-full mb-3 opacity-30"></div>
+                </div>
+                <div class="flex flex-col gap-2 min-[670px]:max-[991px]:flex-row w-fit min-[670px]:max-[991px]:w-full min-[670px]:max-[991px]:justify-evenly">
+                    <div class="flex gap-5 items-center max-sm:w-fit group">
+                        <div class="flex-shrink-0 w-10 h-10 max-[350px]:w-8 max-[350px]:h-8 rounded-full bg-white/10 backdrop-blur-sm transition-all duration-300 group-hover:bg-white/20 group-hover:scale-105 flex items-center justify-center">
+                            <svg width="25" height="25" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 21C15.5 17.4 19 14.1764 19 10.2C19 6.22355 15.866 3 12 3C8.13401 3 5 6.22355 5 10.2C5 14.1764 8.5 17.4 12 21Z" class="stroke-white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M12 13C13.6569 13 15 11.6569 15 10C15 8.34315 13.6569 7 12 7C10.3431 7 9 8.34315 9 10C9 11.6569 10.3431 13 12 13Z" class="stroke-white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                             </svg>
                         </div>
-                        <div class="text-dmgray-0 sm:w-full text-left hover:text-blue-400">Bulgaria</div>
+                        <div class="text-white/80 sm:w-full text-left hover:text-white transition-all duration-300 max-[350px]:text-sm">Bulgaria</div>
                     </div>
-                    <div class="flex gap-5 items-center max-sm:w-fit">
-                        <div class="p-1.5 !max-w-[40px] !max-h-[40px] rounded-full bg-dmgray-0">
-                            <svg class="stroke-dmgray-3" stroke="currentColor" fill="none" stroke-width="2"
-                                 viewBox="0 0 24 24"
+                    <div class="flex gap-5 items-center max-sm:w-fit group">
+                        <div class="flex-shrink-0 w-10 h-10 max-[350px]:w-8 max-[350px]:h-8 rounded-full bg-white/10 backdrop-blur-sm transition-all duration-300 group-hover:bg-white/20 group-hover:scale-105 flex items-center justify-center">
+                            <svg class="stroke-white fill-none" width="20" height="20" viewBox="0 0 24 24"
                                  aria-hidden="true"
-                                 height="1.5rem" width="1.5rem" xmlns="http://www.w3.org/2000/svg">
-                                <path stroke-linecap="round" stroke-linejoin="round"
+                                 xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                       d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
                             </svg>
                         </div>
-                        <a class="text-dmgray-0 sm:w-full text-left underline hover:text-blue-400"
+                        <a class="text-white/80 max-[350px]:text-sm sm:w-full text-left hover:text-white transition-all duration-300"
                            href="mailto:apomarinov@gmail.com?subject=Engineering Enquiry">apomarinov@gmail.com</a>
                     </div>
-                    <div class="flex gap-5 items-center max-sm:w-fit">
-                        <div class="p-2 !max-w-[40px] !max-h-[40px] rounded-full bg-dmgray-0">
-                            <svg class="stroke-dmgray-3 fill-dmgray-3" stroke-width="0" viewBox="0 0 448 512"
-                                 height="1.3em" width="1.3em" xmlns="http://www.w3.org/2000/svg">
+                    <div class="flex gap-5 items-center max-sm:w-fit group">
+                        <div class="flex-shrink-0 w-10 h-10 max-[350px]:w-8 max-[350px]:h-8 rounded-full bg-white/10 backdrop-blur-sm transition-all duration-300 group-hover:bg-white/20 group-hover:scale-105 flex items-center justify-center">
+                            <svg class="stroke-white fill-white" width="20" height="20" viewBox="0 0 448 512"
+                                 xmlns="http://www.w3.org/2000/svg">
                                 <path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"></path>
                             </svg>
                         </div>
-                        <a class="text-dmgray-0 sm:w-full text-left underline hover:text-blue-400"
+                        <a class="text-white/80 sm:w-full max-[350px]:text-sm text-left hover:text-white transition-all duration-300"
                            href="https://www.linkedin.com/in/apomarinov/" target="_blank">apomarinov</a>
                     </div>
                 </div>
+                <div class="w-full mt-9">
+                    <h3 class="font-bold text-xl text-white mb-2">Education</h3>
+                    <div class="border-b-[1px] border-dmgray-0 w-full mb-3 opacity-30"></div>
+                </div>
                 <div class="flex flex-col items-center mt-0 pl-0.5">
-                    <svg class="stroke-dmgray-0" stroke="currentColor" fill="none" stroke-width="1"
+                    <svg class="stroke-white/80 transition-all duration-300 hover:stroke-white" stroke="currentColor" fill="none" stroke-width="1"
                          viewBox="0 0 24 24"
                          stroke-linecap="round" stroke-linejoin="round" height="3em" width="3em"
                          xmlns="http://www.w3.org/2000/svg">
@@ -251,221 +332,166 @@
                         <path d="M22 9l-10 -4l-10 4l10 4l10 -4v6"></path>
                         <path d="M6 10.6v5.4a6 3 0 0 0 12 0v-5.4"></path>
                     </svg>
-                    <p class="text-dmgray-0 -mt-1 w-full text-center text-lg mg:text-xl">Bachelor in Computer
-                        Systems
-                        and
-                        Technologies at Technical University of Gabrovo</p>
+                    <p class="text-white/80 -mt-1 w-full text-center text-lg mg:text-xl">Bachelor in Computer Systems and Technologies at Technical University of Gabrovo</p>
                 </div>
-                <div class="flex flex-col gap-2 items-center mt-0 pl-0.5 w-full">
-                    <svg class="fill-dmgray-0" stroke="currentColor" fill="currentColor" stroke-width="0"
-                         viewBox="0 0 512 512" height="2em"
-                         width="2em" xmlns="http://www.w3.org/2000/svg">
-                        <path d="m478.33 433.6-90-218a22 22 0 0 0-40.67 0l-90 218a22 22 0 1 0 40.67 16.79L316.66 406h102.67l18.33 44.39A22 22 0 0 0 458 464a22 22 0 0 0 20.32-30.4zM334.83 362 368 281.65 401.17 362zm-66.99-19.08a22 22 0 0 0-4.89-30.7c-.2-.15-15-11.13-36.49-34.73 39.65-53.68 62.11-114.75 71.27-143.49H330a22 22 0 0 0 0-44H214V70a22 22 0 0 0-44 0v20H54a22 22 0 0 0 0 44h197.25c-9.52 26.95-27.05 69.5-53.79 108.36-31.41-41.68-43.08-68.65-43.17-68.87a22 22 0 0 0-40.58 17c.58 1.38 14.55 34.23 52.86 83.93.92 1.19 1.83 2.35 2.74 3.51-39.24 44.35-77.74 71.86-93.85 80.74a22 22 0 1 0 21.07 38.63c2.16-1.18 48.6-26.89 101.63-85.59 22.52 24.08 38 35.44 38.93 36.1a22 22 0 0 0 30.75-4.9z"></path>
-                    </svg>
-                    <div class="flex gap-3 flex-wrap">
-                        <div class="rounded-lg px-2 relative overflow-hidden border-2 border-opacity-80 border-dmgray-0">
-                            <div class="absolute left-0 top-0 bg-dmgray-0 bg-opacity-80 w-full h-full"></div>
-                            <span class="relative text-dmgray-3">English</span>
-                        </div>
-                        <div class="rounded-lg px-2 relative overflow-hidden">
-                            <div class="absolute left-0 top-0 bg-dmgray-0 bg-opacity-80 w-full h-full"></div>
-                            <span class="relative text-dmgray-3">Bulgarian</span>
-                        </div>
-                        <div class="rounded-lg px-2 relative overflow-hidden border-2 border-opacity-80 border-dmgray-0">
-                            <div class="absolute left-0 top-0 bg-dmgray-0 bg-opacity-80 w-[38%] h-full"></div>
-                            <span class="relative text-white" style="mix-blend-mode: exclusion;">Thai</span>
-                        </div>
+                <div class="w-full mt-9">
+                    <h3 class="font-bold text-xl text-white mb-2">Languages</h3>
+                    <div class="border-b-[1px] border-dmgray-0 w-full mb-3 opacity-30"></div>
+                </div>
+                <div class="flex justify-center flex-wrap gap-2 items-center mt-0 pl-0.5 w-full">
+                    <div class="skill-tag text-white/80 hover:text-white">
+                        <span class="relative">English</span>
+                    </div>
+                    <div class="skill-tag text-white/80 hover:text-white">
+                        <span class="relative">Bulgarian</span>
+                    </div>
+                    <div class="skill-tag text-white/80 hover:text-white relative overflow-hidden">
+                        <div class="absolute left-0 top-0 bg-white/20 w-[60%] h-full rounded-l-full"></div>
+                        <span class="relative mix-blend-plus-lighter">Thai</span>
                     </div>
                 </div>
             </aside>
         </div>
-        <main class="w-full mg:w-2/3 h-fit bg-white p-4 mg:p-7 flex flex-col gap-7">
-            <div class="w-full">
-                <h3 class="font-bold text-xl text-dmgray-3">About Me</h3>
-                <div class="border-b-[1px] border-dmgray-0 w-full mb-1"></div>
-                <h2> With a decade of diverse experience in the field across various
+        <main class="glass-card w-full mg:w-2/3 h-fit rounded-xl p-6 mg:p-7 !pt-4 flex flex-col mb-5 gap-10">
+            <div class="w-full xl:mb-7">
+                <h3 class="font-bold text-xl text-white mb-2">About Me</h3>
+                <div class="border-b-[1px] border-dmgray-0 w-full mb-3 opacity-30"></div>
+                <h2 class="text-dmgray-0 leading-relaxed"> With a decade of diverse experience in the field across various
                     industries, I've honed a versatile skill set that spans the full spectrum
                     of software development such as coding, system design,
                     optimization, infrastructure, client communications, project
                     management and team leading.</h2>
             </div>
-            <div class="flex flex-col items-start max-sm:gap-3 gap-2 w-full">
+            
+            <div class="flex flex-col items-start gap-5 w-full">
                 <div class="w-full">
-                    <h3 class="font-bold text-xl text-dmgray-3">Technical Skills</h3>
-                    <div class="border-b-[1px] border-dmgray-0 w-full"></div>
+                    <h3 class="font-bold text-xl text-white mb-2">Technical Skills</h3>
+                    <div class="border-b-[1px] border-dmgray-0 w-full mb-3 opacity-30"></div>
                 </div>
-                <div class="flex w-full gap-1 sm:gap-2 items-center max-sm:flex-col">
-                    <span class="whitespace-nowrap w-fit mg:pr-5 relative">
-                        <span class="hidden sm:block invisible">Infra & Cloudd</span>
-                        <span class="sm:absolute left-0 top-0">Languages</span>
+                
+                <div class="flex w-full gap-3 items-start max-sm:flex-col">
+                    <span class="whitespace-nowrap w-fit mg:pr-0 relative">
+                        <span class="text-white opacity-70 whitespace-nowrap w-24">Languages</span>
+                        <span class="hidden sm:block invisible h-0">Infra & Cloudd</span>
                     </span>
-                    <div class="flex gap-1 sm:gap-2 flex-wrap w-full items-start max-sm:justify-center">
-                        <div class="rounded-lg max-sm:pb-0 max-sm:pb-0.5 max-sm:leading-none px-2 relative overflow-hidden border-2 border-dmgray-0">
-                            <span class="relative text-dmgray-3 max-sm:text-xs">JavaScript</span>
-                        </div>
-                        <div class="rounded-lg max-sm:pb-0 max-sm:pb-0.5 max-sm:leading-none px-2 relative overflow-hidden border-2 border-dmgray-0">
-                            <span class="relative text-dmgray-3 max-sm:text-xs">TypeScript</span>
-                        </div>
-                        <div class="rounded-lg max-sm:pb-0 max-sm:pb-0.5 max-sm:leading-none px-2 relative overflow-hidden border-2 border-dmgray-0">
-                            <span class="relative text-dmgray-3 max-sm:text-xs">PHP</span>
-                        </div>
-                        <div class="rounded-lg max-sm:pb-0 max-sm:pb-0.5 max-sm:leading-none px-2 relative overflow-hidden border-2 border-dmgray-0">
-                            <span class="relative text-dmgray-3 max-sm:text-xs">Golang</span>
-                        </div>
-                        <div class="rounded-lg max-sm:pb-0 max-sm:pb-0.5 max-sm:leading-none px-2 relative overflow-hidden border-2 border-dmgray-0">
-                            <span class="relative text-dmgray-3 max-sm:text-xs">Ruby</span>
-                        </div>
+                    <div class="flex gap-2 flex-wrap w-full">
+                        <div class="skill-tag text-dmgray-0">JavaScript</div>
+                        <div class="skill-tag text-dmgray-0">TypeScript</div>
+                        <div class="skill-tag text-dmgray-0">PHP</div>
+                        <div class="skill-tag text-dmgray-0">Golang</div>
+                        <div class="skill-tag text-dmgray-0">Ruby</div>
                     </div>
                 </div>
-                <div class="flex w-full gap-1 sm:gap-2 items-center max-sm:flex-col">
-                    <span class="whitespace-nowrap w-fit mg:pr-5 relative">
-                        <span class="hidden sm:block invisible">Infra & Cloudd</span>
-                        <span class="sm:absolute left-0 top-0">Frameworks</span>
+
+                <div class="flex w-full gap-3 items-start max-sm:flex-col">
+                    <span class="whitespace-nowrap w-fit mg:pr-0 relative">
+                        <span class="text-white opacity-70 whitespace-nowrap w-24">Frameworks</span>
+                        <span class="hidden sm:block invisible h-0">Infra & Cloudd</span>
                     </span>
-                    <div class="flex gap-1 sm:gap-2 flex-wrap w-full items-start max-sm:justify-center">
-                        <div class="rounded-lg max-sm:pb-0 max-sm:pb-0.5 max-sm:leading-none px-2 relative overflow-hidden border-2 border-dmgray-0">
-                            <span class="relative text-dmgray-3 max-sm:text-xs">React</span>
-                        </div>
-                        <div class="rounded-lg max-sm:pb-0 max-sm:pb-0.5 max-sm:leading-none px-2 relative overflow-hidden border-2 border-dmgray-0">
-                            <span class="relative text-dmgray-3 max-sm:text-xs">Vue</span>
-                        </div>
-                        <div class="rounded-lg max-sm:pb-0 max-sm:pb-0.5 max-sm:leading-none px-2 relative overflow-hidden border-2 border-dmgray-0">
-                            <span class="relative text-dmgray-3 max-sm:text-xs">Svelte</span>
-                        </div>
-                        <div class="rounded-lg max-sm:pb-0 max-sm:pb-0.5 max-sm:leading-none px-2 relative overflow-hidden border-2 border-dmgray-0">
-                            <span class="relative text-dmgray-3 max-sm:text-xs">Express</span>
-                        </div>
-                        <div class="rounded-lg max-sm:pb-0 max-sm:pb-0.5 max-sm:leading-none px-2 relative overflow-hidden border-2 border-dmgray-0">
-                            <span class="relative text-dmgray-3 max-sm:text-xs">Laravel</span>
-                        </div>
-                        <div class="rounded-lg max-sm:pb-0 max-sm:pb-0.5 max-sm:leading-none px-2 relative overflow-hidden border-2 border-dmgray-0">
-                            <span class="relative text-dmgray-3 max-sm:text-xs">Wordpress</span>
-                        </div>
-                        <div class="rounded-lg max-sm:pb-0 max-sm:pb-0.5 max-sm:leading-none px-2 relative overflow-hidden border-2 border-dmgray-0">
-                            <span class="relative text-dmgray-3 max-sm:text-xs">Rails</span>
-                        </div>
+                    <div class="flex gap-2 flex-wrap w-full">
+                        <div class="skill-tag text-dmgray-0">React</div>
+                        <div class="skill-tag text-dmgray-0">Vue</div>
+                        <div class="skill-tag text-dmgray-0">Svelte</div>
+                        <div class="skill-tag text-dmgray-0">Express</div>
+                        <div class="skill-tag text-dmgray-0">Laravel</div>
+                        <div class="skill-tag text-dmgray-0">Wordpress</div>
+                        <div class="skill-tag text-dmgray-0">Rails</div>
                     </div>
                 </div>
-                <div class="flex w-full gap-1 sm:gap-2 items-center max-sm:flex-col">
-                    <span class="whitespace-nowrap w-fit mg:pr-5 relative">
-                        <span class="hidden sm:block invisible">Infra & Cloudd</span>
-                        <span class="sm:absolute left-0 top-0">Databases</span>
+
+                <div class="flex w-full gap-3 items-start max-sm:flex-col">
+                    <span class="whitespace-nowrap w-fit mg:pr-0 relative">
+                        <span class="text-white opacity-70 whitespace-nowrap w-24">Databases</span>
+                        <span class="hidden sm:block invisible h-0">Infra & Cloudd</span>
                     </span>
-                    <div class="flex gap-1 sm:gap-2 flex-wrap w-full items-start max-sm:justify-center">
-                        <div class="rounded-lg max-sm:pb-0 max-sm:pb-0.5 max-sm:leading-none px-2 relative overflow-hidden border-2 border-dmgray-0">
-                            <span class="relative text-dmgray-3 max-sm:text-xs">PostgreSQL</span>
-                        </div>
-                        <div class="rounded-lg max-sm:pb-0 max-sm:pb-0.5 max-sm:leading-none px-2 relative overflow-hidden border-2 border-dmgray-0">
-                            <span class="relative text-dmgray-3 max-sm:text-xs">MySQL</span>
-                        </div>
-                        <div class="rounded-lg max-sm:pb-0 max-sm:pb-0.5 max-sm:leading-none px-2 relative overflow-hidden border-2 border-dmgray-0">
-                            <span class="relative text-dmgray-3 max-sm:text-xs">MongoDB</span>
-                        </div>
-                        <div class="rounded-lg max-sm:pb-0 max-sm:pb-0.5 max-sm:leading-none px-2 relative overflow-hidden border-2 border-dmgray-0">
-                            <span class="relative text-dmgray-3 max-sm:text-xs">Elasticsearch</span>
-                        </div>
-                        <div class="rounded-lg max-sm:pb-0 max-sm:pb-0.5 max-sm:leading-none px-2 relative overflow-hidden border-2 border-dmgray-0">
-                            <span class="relative text-dmgray-3 max-sm:text-xs">Neo4j</span>
-                        </div>
+                    <div class="flex gap-2 flex-wrap w-full">
+                        <div class="skill-tag text-dmgray-0">PostgreSQL</div>
+                        <div class="skill-tag text-dmgray-0">MySQL</div>
+                        <div class="skill-tag text-dmgray-0">MongoDB</div>
+                        <div class="skill-tag text-dmgray-0">Elasticsearch</div>
+                        <div class="skill-tag text-dmgray-0">Neo4j</div>
                     </div>
                 </div>
-                <div class="flex w-full gap-1 sm:gap-2 items-center max-sm:flex-col">
-                    <span class="whitespace-nowrap w-fit mg:pr-5 relative">
-                        <span class="hidden sm:block invisible">Infra & Cloudd</span>
-                        <span class="sm:absolute left-0 top-0">Infra & Cloud</span>
+
+                <div class="flex w-full gap-3 items-start max-sm:flex-col">
+                    <span class="whitespace-nowrap w-fit mg:pr-0 relative">
+                        <span class="text-white opacity-70 whitespace-nowrap w-24">Infra & Cloud</span>
+                        <span class="hidden sm:block invisible h-0">Infra & Cloudd</span>
                     </span>
-                    <div class="flex gap-1 sm:gap-2 flex-wrap w-full items-start max-sm:justify-center">
-                        <div class="rounded-lg max-sm:pb-0 max-sm:pb-0.5 max-sm:leading-none px-2 relative overflow-hidden border-2 border-dmgray-0">
-                            <span class="relative text-dmgray-3 max-sm:text-xs">GCP</span>
-                        </div>
-                        <div class="rounded-lg max-sm:pb-0 max-sm:pb-0.5 max-sm:leading-none px-2 relative overflow-hidden border-2 border-dmgray-0">
-                            <span class="relative text-dmgray-3 max-sm:text-xs">AWS</span>
-                        </div>
-                        <div class="rounded-lg max-sm:pb-0 max-sm:pb-0.5 max-sm:leading-none px-2 relative overflow-hidden border-2 border-dmgray-0">
-                            <span class="relative text-dmgray-3 max-sm:text-xs">Terraform</span>
-                        </div>
-                        <div class="rounded-lg max-sm:pb-0 max-sm:pb-0.5 max-sm:leading-none px-2 relative overflow-hidden border-2 border-dmgray-0">
-                            <span class="relative text-dmgray-3 max-sm:text-xs">Docker</span>
-                        </div>
+                    <div class="flex gap-2 flex-wrap w-full">
+                        <div class="skill-tag text-dmgray-0">GCP</div>
+                        <div class="skill-tag text-dmgray-0">AWS</div>
+                        <div class="skill-tag text-dmgray-0">Terraform</div>
+                        <div class="skill-tag text-dmgray-0">Docker</div>
                     </div>
                 </div>
-                <div class="flex w-full gap-1 sm:gap-2 items-center max-sm:flex-col">
-                    <span class="whitespace-nowrap w-fit mg:pr-5 relative">
-                        <span class="hidden sm:block invisible">Infra & Cloudd</span>
-                        <span class="sm:absolute left-0 top-0">CI/CD</span>
+
+                <div class="flex w-full gap-3 items-start max-sm:flex-col">
+                    <span class="whitespace-nowrap w-fit mg:pr-0 relative">
+                        <span class="text-white opacity-70 whitespace-nowrap w-24">CI/CD</span>
+                        <span class="hidden sm:block invisible h-0">Infra & Cloudd</span>
                     </span>
-                    <div class="flex gap-1 sm:gap-2 flex-wrap w-full items-start max-sm:justify-center">
-                        <div class="rounded-lg max-sm:pb-0 max-sm:pb-0.5 max-sm:leading-none px-2 relative overflow-hidden border-2 border-dmgray-0">
-                            <span class="relative text-dmgray-3 max-sm:text-xs">GitHub</span>
-                        </div>
-                        <div class="rounded-lg max-sm:pb-0 max-sm:pb-0.5 max-sm:leading-none px-2 relative overflow-hidden border-2 border-dmgray-0">
-                            <span class="relative text-dmgray-3 max-sm:text-xs">CircleCI</span>
-                        </div>
-                        <div class="rounded-lg max-sm:pb-0 max-sm:pb-0.5 max-sm:leading-none px-2 relative overflow-hidden border-2 border-dmgray-0">
-                            <span class="relative text-dmgray-3 max-sm:text-xs">Argo</span>
-                        </div>
+                    <div class="flex gap-2 flex-wrap w-full">
+                        <div class="skill-tag text-dmgray-0">GitHub</div>
+                        <div class="skill-tag text-dmgray-0">CircleCI</div>
+                        <div class="skill-tag text-dmgray-0">Argo</div>
                     </div>
                 </div>
-                <div class="flex w-full gap-1 sm:gap-2 items-center max-sm:flex-col">
-                    <span class="whitespace-nowrap w-fit mg:pr-5 relative">
-                        <span class="hidden sm:block invisible">Infra & Cloudd</span>
-                        <span class="sm:absolute left-0 top-0">Testing</span>
+
+                <div class="flex w-full gap-3 items-start max-sm:flex-col">
+                    <span class="whitespace-nowrap w-fit mg:pr-0 relative">
+                        <span class="text-white opacity-70 whitespace-nowrap w-24">Testing</span>
+                        <span class="hidden sm:block invisible h-0">Infra & Cloudd</span>
                     </span>
-                    <div class="flex gap-1 sm:gap-2 flex-wrap w-full items-start max-sm:justify-center">
-                        <div class="rounded-lg max-sm:pb-0 max-sm:pb-0.5 max-sm:leading-none px-2 relative overflow-hidden border-2 border-dmgray-0">
-                            <span class="relative text-dmgray-3 max-sm:text-xs">Jest</span>
-                        </div>
-                        <div class="rounded-lg max-sm:pb-0 max-sm:pb-0.5 max-sm:leading-none px-2 relative overflow-hidden border-2 border-dmgray-0">
-                            <span class="relative text-dmgray-3 max-sm:text-xs">PHPUnit</span>
-                        </div>
-                        <div class="rounded-lg max-sm:pb-0 max-sm:pb-0.5 max-sm:leading-none px-2 relative overflow-hidden border-2 border-dmgray-0">
-                            <span class="relative text-dmgray-3 max-sm:text-xs">Playwright</span>
-                        </div>
+                    <div class="flex gap-2 flex-wrap w-full">
+                        <div class="skill-tag text-dmgray-0">Jest</div>
+                        <div class="skill-tag text-dmgray-0">PHPUnit</div>
+                        <div class="skill-tag text-dmgray-0">Playwright</div>
                     </div>
                 </div>
             </div>
+
             <div class="flex flex-col items-start gap-2 w-full">
                 <div class="w-full">
-                    <h3 class="font-bold text-xl text-dmgray-3">Soft Skills</h3>
-                    <div class="border-b-[1px] border-dmgray-0 w-full"></div>
+                    <h3 class="font-bold text-xl text-white mb-2">Soft Skills</h3>
+                    <div class="border-b-[1px] border-dmgray-0 w-full mb-3 opacity-30"></div>
                 </div>
-                <div class="flex w-full gap-1 sm:gap-2 items-center max-sm:flex-col">
-                    <div class="flex gap-1 sm:gap-2 flex-wrap w-full items-start">
-                        <div class="rounded-lg max-sm:pb-0 max-sm:pb-0.5 max-sm:leading-none px-2 relative overflow-hidden border-2 border-dmgray-0">
-                            <span class="relative text-dmgray-3 max-sm:text-xs">Client Communication</span>
-                        </div>
-                        <div class="rounded-lg max-sm:pb-0 max-sm:pb-0.5 max-sm:leading-none px-2 relative overflow-hidden border-2 border-dmgray-0">
-                            <span class="relative text-dmgray-3 max-sm:text-xs">Project Management</span>
-                        </div>
-                        <div class="rounded-lg max-sm:pb-0 max-sm:pb-0.5 max-sm:leading-none px-2 relative overflow-hidden border-2 border-dmgray-0">
-                            <span class="relative text-dmgray-3 max-sm:text-xs">Delegation</span>
-                        </div>
-                    </div>
+                <div class="flex gap-2 flex-wrap w-full">
+                    <div class="skill-tag text-dmgray-0">Client Communication</div>
+                    <div class="skill-tag text-dmgray-0">Project Management</div>
+                    <div class="skill-tag text-dmgray-0">Delegation</div>
                 </div>
             </div>
-            <div class="flex flex-col items-start gap-4 w-full">
+
+            <div class="flex flex-col items-start gap-0 w-full">
                 <div class="w-full">
-                    <h3 class="font-bold text-xl text-dmgray-3">Experience</h3>
-                    <div class="border-b-[1px] border-dmgray-0 w-full"></div>
+                    <h3 class="font-bold text-xl text-white mb-2">Experience</h3>
+                    <div class="border-b-[1px] border-dmgray-0 w-full mb-3 opacity-30"></div>
                 </div>
-                <div class="flex w-full">
-                    <div class="flex flex-col w-full group">
-                        <div class="flex w-full justify-between text-dmgray-3 max-xs:flex-col">
+                <div class="flex w-full flex-col gap-0">
+                    <div class="flex flex-col w-full">
+                        <div class="flex w-full justify-between text-white max-xs:flex-col">
                             <span class="font-bold">Lead Engineer</span>
-                            <span class="max-xs:text-sm"><a
+                            <span class="text-xs"><a
                                     href="https://www.linkedin.com/company/prodigy9/mycompany/"
                                     target="_blank"
-                                    class="hover:text-blue-400 max-xs:text-sm">PRODIGY9</a>, Thailand</span>
+                                    class="hover:text-white/100 text-white/80 text-xs">PRODIGY9</a>, Thailand</span>
                         </div>
-                        <div class="text-dmgray-05 mb-1 text-xs">August 2021 - Present (fully remote)</div>
-                        <div class="flex flex-col relative exp text-dmgray-3">
-                            <div class="px-2 exp-content">
-                                <p>&#9679; Lead client communications and understand client needs</p>
-                                <p>&#9679; Bridge between client’s team and my own </p>
-                                <p>&#9679; Product system design and implementation </p>
-                                <div class="show-more text-xs text-dmgray-05 group-hover:block cursor-pointer">
+                        <div class="text-white/60 mb-1 text-xs">August 2021 - Present (fully remote)</div>
+                        <div class="flex flex-col relative exp text-white/80">
+                            <div class="px-2">
+                                <p>&#9679; <span class="pr-1 !h-0"></span> Lead client communications and understand client needs</p>
+                                <p>&#9679; <span class="pr-1 !h-0"></span> Bridge between client's team and my own </p>
+                                <p>&#9679; <span class="pr-1 !h-0"></span> Product system design and implementation </p>
+                                <div class="show-more text-xs text-white/60 group-hover:block cursor-pointer">
                                     Show More
                                 </div>
+                                <div class="hidden show-more-content">
+                                    <p class="mt-2">Taking my skills to the next level, I have the opportunity to work on
+                                        many different projects. My main responsibilities are leading
+                                        communication with clients and their teams, understanding their
+                                        needs and leading them to the right solutions, organizing the work to
+                                        get there and delegating it to my team. Whether starting a project
                             </div>
                             <div class="hidden exp-content">
                                 <p>Taking my skills to the next level, I have the opportunity to work on
@@ -483,146 +509,146 @@
                         </div>
                     </div>
                 </div>
-                <div class="flex w-full mt-1">
+                <div class="flex w-full mt-4">
                     <div class="flex flex-col w-full group">
-                        <div class="flex w-full justify-between text-dmgray-3 max-xs:flex-col">
+                        <div class="flex w-full justify-between text-white max-xs:flex-col">
                             <span class="font-bold">Full Stack Developer</span>
-                            <span class="max-xs:text-sm"><a
+                            <span class="text-xs"><a
                                     href="https://www.linkedin.com/company/fazwaz/"
                                     target="_blank"
-                                    class="hover:text-blue-400 max-xs:text-sm">FazWaz</a>, Thailand</span>
+                                    class="hover:text-white/100 text-white/80 text-xs">FazWaz</a>, Thailand</span>
                         </div>
-                        <div class="text-dmgray-05 mb-1 text-xs">August 2020 - August 2021</div>
-                        <div class="flex flex-col relative exp text-dmgray-3">
-                            <div class="px-2 exp-content">
-                                <p>&#9679; Work on a highly optimized property portal</p>
-                                <div class="show-more text-xs text-dmgray-05 group-hover:block cursor-pointer">
+                        <div class="text-white/60 mb-1 text-xs">August 2020 - August 2021</div>
+                        <div class="flex flex-col relative exp text-white/80">
+                            <div class="px-2">
+                                <p>&#9679; <span class="pr-1 !h-0"></span> Work on a highly optimized property portal</p>
+                                <div class="show-more text-xs text-white/60 group-hover:block cursor-pointer">
                                     Show More
                                 </div>
-                            </div>
-                            <div class="hidden exp-content">
-                                <p>Joining a highly diverse team, I had the opportunity to improve this
-                                    established property sale and rent portal with new features,
-                                    while focusing on keeping its highest performance scores for best
-                                    SEO ranking. My biggest challenges were implementing ways to
-                                    process and restructure a rather large database of property data,
-                                    while keeping its integrity in all parts of the system.</p>
+                                <div class="hidden show-more-content">
+                                    <p class="mt-2">Joining a highly diverse team, I had the opportunity to improve this
+                                        established property sale and rent portal with new features,
+                                        while focusing on keeping its highest performance scores for best
+                                        SEO ranking. My biggest challenges were implementing ways to
+                                        process and restructure a rather large database of property data,
+                                        while keeping its integrity in all parts of the system.</p>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="flex w-full mt-1">
+                <div class="flex w-full mt-4">
                     <div class="flex flex-col w-full group">
-                        <div class="flex w-full justify-between text-dmgray-3 max-xs:flex-col">
+                        <div class="flex w-full justify-between text-white max-xs:flex-col">
                             <span class="font-bold">Full Stack Developer</span>
-                            <span class="max-xs:text-sm"><a
+                            <span class="text-xs"><a
                                     href="https://www.linkedin.com/company/redplanethotels/"
-                                    target="_blank" class="hover:text-blue-400 max-xs:text-sm">Red Planet Hotels</a>, Thailand</span>
+                                    target="_blank" class="hover:text-white/100 text-white/80 text-xs">Red Planet Hotels</a>, Thailand</span>
                         </div>
-                        <div class="text-dmgray-05 mb-1 text-xs">April 2020 - July 2020</div>
-                        <div class="flex flex-col relative exp">
-                            <div class="px-2 exp-content text-dmgray-3">
-                                <p>&#9679; Supported a monolith of legacy code and many of its services</p>
-                                <p>&#9679; Upgraded the payments system</p>
-                                <div class="show-more text-xs text-dmgray-05 group-hover:block cursor-pointer">
+                        <div class="text-white/60 mb-1 text-xs">April 2020 - July 2020</div>
+                        <div class="flex flex-col relative exp text-white/80">
+                            <div class="px-2">
+                                <p>&#9679; <span class="pr-1 !h-0"></span> Supported a monolith of legacy code and many of its services</p>
+                                <p>&#9679; <span class="pr-1 !h-0"></span> Upgraded the payments system</p>
+                                <div class="show-more text-xs text-white/60 group-hover:block cursor-pointer">
                                     Show More
                                 </div>
-                            </div>
-                            <div class="hidden exp-content">
-                                <p>At Red Planet Hotels I was able to dip my hands into the complex
-                                    structure of this hotel booking platform project and its many
-                                    dependencies. Navigating a huge legacy codebase, I had the
-                                    opportunity to implement 3DS verification into the existing payments
-                                    system. I also supported many internal projects, thirty party
-                                    integrations and server tools. I was laid of due to the hotel business
-                                    being severely affected by the pandemic.</p>
+                                <div class="hidden show-more-content">
+                                    <p class="mt-2">At Red Planet Hotels I was able to dip my hands into the complex
+                                        structure of this hotel booking platform project and its many
+                                        dependencies. Navigating a huge legacy codebase, I had the
+                                        opportunity to implement 3DS verification into the existing payments
+                                        system. I also supported many internal projects, thirty party
+                                        integrations and server tools. I was laid of due to the hotel business
+                                        being severely affected by the pandemic.</p>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="flex w-full mt-1">
+                <div class="flex w-full mt-4">
                     <div class="flex flex-col w-full group">
-                        <div class="flex w-full justify-between text-dmgray-3 max-xs:flex-col">
+                        <div class="flex w-full justify-between text-white max-xs:flex-col">
                             <span class="font-bold">Backend Developer</span>
-                            <span class="max-xs:text-sm">Radius, Thailand</span>
+                            <span class="text-xs">Radius, Thailand</span>
                         </div>
-                        <div class="text-dmgray-05 mb-1 text-xs">July 2019 - April 2020</div>
-                        <div class="flex flex-col relative exp text-dmgray-3">
-                            <div class="px-2 exp-content">
-                                <p>&#9679; Worked on a Golang API for an iOS app</p>
-                                <div class="show-more text-xs text-dmgray-05 group-hover:block cursor-pointer">
+                        <div class="text-white/60 mb-1 text-xs">July 2019 - April 2020</div>
+                        <div class="flex flex-col relative exp text-white/80">
+                            <div class="px-2">
+                                <p>&#9679; <span class="pr-1 !h-0"></span> Worked on a Golang API for an iOS app</p>
+                                <div class="show-more text-xs text-white/60 group-hover:block cursor-pointer">
                                     Show More
                                 </div>
-                            </div>
-                            <div class="hidden exp-content">
-                                <p>My first experience joining a foreign team, I was involved in
-                                    developing the backend API for an iOS application targeting student
-                                    communications, as well as in designing and implementing a
-                                    complete rebuild of that API, working closely with mobile developers
-                                    and testers.</p>
+                                <div class="hidden show-more-content">
+                                    <p class="mt-2">My first experience joining a foreign team, I was involved in
+                                        developing the backend API for an iOS application targeting student
+                                        communications, as well as in designing and implementing a
+                                        complete rebuild of that API, working closely with mobile developers
+                                        and testers.</p>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="flex w-full mt-1">
+                <div class="flex w-full mt-4">
                     <div class="flex flex-col w-full group">
-                        <div class="flex w-full justify-between text-dmgray-3 max-xs:flex-col">
+                        <div class="flex w-full justify-between text-white max-xs:flex-col">
                             <span class="font-bold">Backend Developer</span>
-                            <span class="max-xs:text-sm"><a
+                            <span class="text-xs"><a
                                     href="https://www.linkedin.com/company/credoweb/"
                                     target="_blank"
-                                    class="hover:text-blue-400 max-xs:text-sm">Credoweb</a>, Bulgaria</span>
+                                    class="hover:text-white/100 text-white/80 text-xs">Credoweb</a>, Bulgaria</span>
                         </div>
-                        <div class="text-dmgray-05 mb-1 text-xs">June 2016 - July 2019</div>
-                        <div class="flex flex-col relative exp">
-                            <div class="px-2 exp-content text-dmgray-3">
-                                <p>&#9679; Worked on a medical social network platform</p>
-                                <p>&#9679; Collaborated with QA, Mobile and DevOps teams</p>
-                                <div class="show-more text-xs text-dmgray-05 group-hover:block cursor-pointer">
+                        <div class="text-white/60 mb-1 text-xs">June 2016 - July 2019</div>
+                        <div class="flex flex-col relative exp text-white/80">
+                            <div class="px-2">
+                                <p>&#9679; <span class="pr-1 !h-0"></span> Worked on a medical social network platform</p>
+                                <p>&#9679; <span class="pr-1 !h-0"></span> Collaborated with QA, Mobile and DevOps teams</p>
+                                <div class="show-more text-xs text-white/60 group-hover:block cursor-pointer">
                                     Show More
                                 </div>
-                            </div>
-                            <div class="hidden exp-content">
-                                <p class="text-dmgray-3">A medical social network and marketing platform that currently
-                                    services users in several countries around the world. I was involved
-                                    in building the backend API in PHP, using custom solutions for all
-                                    required modules. Regularly collaborating with Frontend and Mobile
-                                    teams to provide consistent data to a web client based on Angular
-                                    and Android and iOS apps through GraphQL. Collaborating with
-                                    DevOps team to make sure the tools and environment meet the
-                                    needs of the project.</p>
+                                <div class="hidden show-more-content">
+                                    <p class="mt-2">A medical social network and marketing platform that currently
+                                        services users in several countries around the world. I was involved
+                                        in building the backend API in PHP, using custom solutions for all
+                                        required modules. Regularly collaborating with Frontend and Mobile
+                                        teams to provide consistent data to a web client based on Angular
+                                        and Android and iOS apps through GraphQL. Collaborating with
+                                        DevOps team to make sure the tools and environment meet the
+                                        needs of the project.</p>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="flex w-full mt-1">
+                <div class="flex w-full mt-4">
                     <div class="flex flex-col w-full group">
-                        <div class="flex w-full justify-between text-dmgray-3 max-xs:flex-col">
+                        <div class="flex w-full justify-between text-white max-xs:flex-col">
                             <span class="font-bold">Game Developer</span>
-                            <span class="max-xs:text-sm">Masthead Studios, Bulgaria</span>
+                            <span class="text-xs">Masthead Studios, Bulgaria</span>
                         </div>
-                        <div class="text-dmgray-05 mb-1 text-xs">November 2015 - May 2016</div>
-                        <div class="flex flex-col relative exp">
-                            <div class="exp-content text-dmgray-3 pl-2">
-                                <p>&#9679; Developed a user interface system so their PC game could work with
+                        <div class="text-white/60 mb-1 text-xs">November 2015 - May 2016</div>
+                        <div class="flex flex-col relative exp text-white/80">
+                            <div class="exp-content text-white/80 pl-2">
+                                <p>&#9679; <span class="pr-1 !h-0"></span> Developed a user interface system so their PC game could work with
                                     a controller, using the Unity3D engine.</p>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="flex w-full mt-1">
+                <div class="flex w-full mt-4">
                     <div class="flex flex-col w-full group">
-                        <div class="flex w-full justify-between text-dmgray-3 max-xs:flex-col">
+                        <div class="flex w-full justify-between text-white max-xs:flex-col">
                             <span class="font-bold">Full Stack Developer</span>
-                            <span class="max-xs:text-sm"><a
+                            <span class="text-xs"><a
                                     href="https://www.linkedin.com/company/melon-ad/"
                                     target="_blank"
-                                    class="hover:text-blue-400 max-xs:text-sm">Melon</a>, Bulgaria</span>
+                                    class="hover:text-white/100 text-white/80 text-xs">Melon</a>, Bulgaria</span>
                         </div>
-                        <div class="text-dmgray-05 mb-1 text-xs">July 2015 - October 2015</div>
-                        <div class="flex flex-col relative exp">
-                            <div class="exp-content text-dmgray-3 pl-2">
-                                <p>&#9679; Built a Key Performance Indicator tracking system for employees in
+                        <div class="text-white/60 mb-1 text-xs">July 2015 - October 2015</div>
+                        <div class="flex flex-col relative exp text-white/80">
+                            <div class="exp-content text-white/80 pl-2">
+                                <p>&#9679; <span class="pr-1 !h-0"></span> Built a Key Performance Indicator tracking system for employees in
                                     the production sector using CakePHP for the backend and AngularJS
                                     for the Web Client. Also gained experience with Magento and
                                     Symfony.</p>
@@ -630,32 +656,32 @@
                         </div>
                     </div>
                 </div>
-                <div class="flex w-full mt-1">
+                <div class="flex w-full mt-4">
                     <div class="flex flex-col w-full group">
-                        <div class="flex w-full justify-between text-dmgray-3 max-xs:flex-col">
+                        <div class="flex w-full justify-between text-white max-xs:flex-col">
                             <span class="font-bold">Full Stack Developer</span>
-                            <span class="max-xs:text-sm"><a
+                            <span class="text-xs"><a
                                     href="https://www.linkedin.com/company/interactive-share-ltd/"
-                                    target="_blank" class="hover:text-blue-400 max-xs:text-sm">Interactive Share</a>, Bulgaria</span>
+                                    target="_blank" class="hover:text-white/100 text-white/80 text-xs">Interactive Share</a>, Bulgaria</span>
                         </div>
-                        <div class="text-dmgray-05 mb-1 text-xs">June 2014 - June 2015</div>
-                        <div class="flex flex-col relative exp">
-                            <div class="px-2 exp-content text-dmgray-3">
-                                <p>Hello World 🐣</p>
-                                <div class="show-more text-xs text-dmgray-05 group-hover:block cursor-pointer">
+                        <div class="text-white/60 mb-1 text-xs">June 2014 - June 2015</div>
+                        <div class="flex flex-col relative exp text-white/80">
+                            <div class="px-2">
+                                <p>&#9679; <span class="pr-1 !h-0"></span> Hello World 🐣</p>
+                                <div class="show-more text-xs text-white/60 group-hover:block cursor-pointer">
                                     Show More
                                 </div>
-                            </div>
-                            <div class="hidden exp-content">
-                                <p class="text-dmgray-3">Starting off as an intern and later joining full time, in the
-                                    digital marketing field I had the opportunity to build
-                                    many projects like Facebook Apps,
-                                    landing pages and websites for clients whose target always was to engage more
-                                    consumers in
-                                    their brand. I gained my initial experience with PHP, MySQL,
-                                    JavaScript/AngularJS/jQuery and
-                                    Unix, working on various projects each implementing different mechanics like canvas
-                                    animation for example.</p>
+                                <div class="hidden show-more-content">
+                                    <p class="mt-2">Starting off as an intern and later joining full time, in the
+                                        digital marketing field I had the opportunity to build
+                                        many projects like Facebook Apps,
+                                        landing pages and websites for clients whose target always was to engage more
+                                        consumers in
+                                        their brand. I gained my initial experience with PHP, MySQL,
+                                        JavaScript/AngularJS/jQuery and
+                                        Unix, working on various projects each implementing different mechanics like canvas
+                                        animation for example.</p>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -665,35 +691,33 @@
     </div>
 </div>
 <script>
-    function draw() {
-        const canvas = document.getElementById("tutorial");
-        if (canvas.getContext) {
-            const cw = canvas.parentElement.getBoundingClientRect().width + (window.innerWidth < 768 ? 10 : 2);
-            const ch = canvas.parentElement.getBoundingClientRect().height;
-            canvas.width = cw;
-            canvas.height = ch;
-            const ctx = canvas.getContext("2d");
-            const path = new Path2D();
-            path.moveTo(0, 0);
-            path.lineTo((cw / 2), ch * 0.7);
-            path.lineTo(cw, 0);
-            path.lineTo(cw, ch);
-            path.lineTo(0, ch);
-            ctx.fillStyle = '#393939'
-            ctx.fill(path);
-        }
-    }
-
-    draw()
-    window.addEventListener('resize', draw)
-
     document.querySelectorAll('.show-more').forEach(el => {
         el.addEventListener('click', (e) => {
-            e.target.closest('.exp').querySelectorAll('.exp-content').forEach(c => {
-                c.classList.toggle('hidden')
-            })
-        })
-    })
+            const content = e.target.nextElementSibling;
+            content.classList.remove('hidden');
+            e.target.classList.add('hidden');
+            e.target.classList.remove('group-hover:block');
+        });
+    });
+
+    // Add smooth scroll behavior
+    document.documentElement.style.scrollBehavior = 'smooth';
+
+    // Add intersection observer for fade-in animations
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+            }
+        });
+    }, {
+        threshold: 0.1
+    });
+
+    document.querySelectorAll('.section-fade').forEach((el) => {
+        observer.observe(el);
+    });
 </script>
 </body>
 </html>
