@@ -37,6 +37,7 @@
             },
         }
     </script>
+
     <style>
         * {
             font-size: 18px;
@@ -217,6 +218,11 @@
             transition: all 0.3s ease;
         }
 
+        .skill-icon {
+            width: 1.5rem;
+            height: 1.5rem;
+        }
+
         .profile-image {
             transition: all 0.5s ease;
             box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
@@ -364,7 +370,7 @@
                     management and team leading.</h2>
             </div>
             
-            <div class="flex flex-col items-start gap-5 w-full">
+            <div class="flex flex-col items-start gap-4 w-full">
                 <div class="w-full">
                     <h3 class="font-bold text-xl text-white mb-2">Technical Skills</h3>
                     <div class="border-b-[1px] border-dmgray-0 w-full mb-3 opacity-30"></div>
@@ -375,12 +381,14 @@
                         <span class="text-white opacity-70 whitespace-nowrap w-24">Languages</span>
                         <span class="hidden sm:block invisible h-0">Infra & Cloudd</span>
                     </span>
-                    <div class="flex gap-2 flex-wrap w-full">
-                        <div class="skill-tag text-dmgray-0">JavaScript</div>
-                        <div class="skill-tag text-dmgray-0">TypeScript</div>
-                        <div class="skill-tag text-dmgray-0">PHP</div>
-                        <div class="skill-tag text-dmgray-0">Golang</div>
-                        <div class="skill-tag text-dmgray-0">Ruby</div>
+                    <div class="flex gap-2.5 flex-wrap w-full">
+                        <img src="/icons/typescript-svgrepo-com.svg" alt="TypeScript" class="skill-icon" title="TypeScript">
+                        <img src="/icons/javascript-svgrepo-com.svg" alt="JavaScript" class="skill-icon" title="JavaScript">
+                        <img src="/icons/php-svgrepo-com.svg" alt="PHP" class="skill-icon" title="PHP">
+                        <div class="relative w-12 h-0">
+                            <img src="/icons/go-svgrepo-com.svg" class="absolute -top-2.5 left-0" style="width: 2.8rem; height: 2.8rem;" alt="Golang" class="skill-icon" title="Golang">
+                        </div>
+                        <img src="/icons/ruby-svgrepo-com.svg" alt="Ruby" class="skill-icon" title="Ruby">
                     </div>
                 </div>
 
@@ -389,14 +397,16 @@
                         <span class="text-white opacity-70 whitespace-nowrap w-24">Frameworks</span>
                         <span class="hidden sm:block invisible h-0">Infra & Cloudd</span>
                     </span>
-                    <div class="flex gap-2 flex-wrap w-full">
-                        <div class="skill-tag text-dmgray-0">React</div>
-                        <div class="skill-tag text-dmgray-0">Vue</div>
-                        <div class="skill-tag text-dmgray-0">Svelte</div>
-                        <div class="skill-tag text-dmgray-0">Express</div>
-                        <div class="skill-tag text-dmgray-0">Laravel</div>
-                        <div class="skill-tag text-dmgray-0">Wordpress</div>
-                        <div class="skill-tag text-dmgray-0">Rails</div>
+                    <div class="flex gap-2.5 flex-wrap w-full">
+                        <img src="/icons/react-svgrepo-com.svg" alt="React" class="skill-icon" title="React">
+                        <img src="/icons/vue-svgrepo-com.svg" alt="Vue" class="skill-icon" title="Vue">
+                        <img src="/icons/svelte-icon-svgrepo-com.svg" alt="Svelte" class="skill-icon" title="Svelte">
+                        <img src="/icons/express-svgrepo-com.svg" alt="Express" class="skill-icon" title="Express">
+                        <img src="/icons/laravel-logo-svgrepo-com.svg" alt="Laravel" class="skill-icon" title="Laravel">
+                        <img src="/icons/wordpress-color-svgrepo-com.svg" alt="Wordpress" class="skill-icon" title="Wordpress">
+                        <div class="relative w-12 h-0">
+                            <img src="/icons/rails-svgrepo-com.svg" class="absolute -top-3 left-0" style="width: 3rem; height: 3rem;" alt="Rails" class="skill-icon" title="Rails">
+                        </div>
                     </div>
                 </div>
 
@@ -405,12 +415,14 @@
                         <span class="text-white opacity-70 whitespace-nowrap w-24">Databases</span>
                         <span class="hidden sm:block invisible h-0">Infra & Cloudd</span>
                     </span>
-                    <div class="flex gap-2 flex-wrap w-full">
-                        <div class="skill-tag text-dmgray-0">PostgreSQL</div>
-                        <div class="skill-tag text-dmgray-0">MySQL</div>
-                        <div class="skill-tag text-dmgray-0">MongoDB</div>
-                        <div class="skill-tag text-dmgray-0">Elasticsearch</div>
-                        <div class="skill-tag text-dmgray-0">Neo4j</div>
+                    <div class="flex gap-2.5 flex-wrap w-full">
+                        <img src="/icons/postgresql-svgrepo-com.svg" alt="PostgreSQL" class="skill-icon" title="PostgreSQL">
+                        <div class="relative w-12 h-0">
+                            <img src="/icons/mysql-logo-svgrepo-com.svg" class="absolute -top-3 left-0" style="width: 3rem; height: 3rem;" alt="MySQL" class="skill-icon" title="MySQL">
+                        </div>
+                        <img src="/icons/mongodb-svgrepo-com.svg" alt="MongoDB" class="skill-icon" title="MongoDB">
+                        <img src="/icons/elasticsearch-svgrepo-com.svg" alt="Elasticsearch" class="skill-icon" title="Elasticsearch">
+                        <img src="/icons/neo4j-ar21.svg" style="width: 3.1rem;" alt="Neo4j" class="skill-icon" title="Neo4j">
                     </div>
                 </div>
 
@@ -419,11 +431,11 @@
                         <span class="text-white opacity-70 whitespace-nowrap w-24">Infra & Cloud</span>
                         <span class="hidden sm:block invisible h-0">Infra & Cloudd</span>
                     </span>
-                    <div class="flex gap-2 flex-wrap w-full">
-                        <div class="skill-tag text-dmgray-0">GCP</div>
-                        <div class="skill-tag text-dmgray-0">AWS</div>
-                        <div class="skill-tag text-dmgray-0">Terraform</div>
-                        <div class="skill-tag text-dmgray-0">Docker</div>
+                    <div class="flex gap-2.5 flex-wrap w-full">
+                        <img src="/icons/gcp-svgrepo-com.svg" alt="GCP" class="skill-icon" title="GCP">
+                        <img src="/icons/aws-svgrepo-com.svg" alt="AWS" class="skill-icon" title="AWS">
+                        <img src="/icons/terraform-svgrepo-com.svg" alt="Terraform" class="skill-icon" title="Terraform">
+                        <img src="/icons/docker-svgrepo-com.svg" alt="Docker" class="skill-icon" title="Docker">
                     </div>
                 </div>
 
@@ -432,10 +444,9 @@
                         <span class="text-white opacity-70 whitespace-nowrap w-24">CI/CD</span>
                         <span class="hidden sm:block invisible h-0">Infra & Cloudd</span>
                     </span>
-                    <div class="flex gap-2 flex-wrap w-full">
-                        <div class="skill-tag text-dmgray-0">GitHub</div>
-                        <div class="skill-tag text-dmgray-0">CircleCI</div>
-                        <div class="skill-tag text-dmgray-0">Argo</div>
+                    <div class="flex gap-2.5 flex-wrap w-full">
+                        <img src="/icons/github-svgrepo-com.svg" alt="GitHub" class="skill-icon" title="GitHub">
+                        <img src="/icons/circleci-svgrepo-com.svg" alt="CircleCI" class="skill-icon" title="CircleCI">
                     </div>
                 </div>
 
@@ -444,10 +455,10 @@
                         <span class="text-white opacity-70 whitespace-nowrap w-24">Testing</span>
                         <span class="hidden sm:block invisible h-0">Infra & Cloudd</span>
                     </span>
-                    <div class="flex gap-2 flex-wrap w-full">
-                        <div class="skill-tag text-dmgray-0">Jest</div>
-                        <div class="skill-tag text-dmgray-0">PHPUnit</div>
-                        <div class="skill-tag text-dmgray-0">Playwright</div>
+                    <div class="flex gap-2.5 flex-wrap w-full">
+                        <img src="/icons/jest-svgrepo-com.svg" alt="Jest" class="skill-icon" title="Jest">
+                        <img src="/icons/phpunit-svgrepo-com.svg" alt="PHPUnit" class="skill-icon" title="PHPUnit">
+                        <img src="/icons/theatre-drama-svgrepo-com.svg" alt="Playwright" class="skill-icon" title="Playwright">
                     </div>
                 </div>
             </div>
