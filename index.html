@@ -1090,6 +1090,59 @@
                     <div class="border-b-[1px] border-dmgray-0 w-full mb-3 opacity-30"></div>
                 </div>
                 <div class="flex w-full flex-col gap-0">
+                    <div class="flex flex-col w-full mb-4">
+                        <div class="flex w-full justify-between text-white max-xs:flex-col">
+                            <span class="font-bold">Senior Full Stack Engineer</span>
+                            <span class="text-xs"><a
+                                    class="hover:text-white/100 text-white/80 text-xs"
+                                    href="https://trashlab.com/"
+                                    target="_blank">TrashLab</a>, USA</span>
+                        </div>
+                        <div class="text-white/60 mb-1 text-xs">July 2024 - Present (fully remote)</div>
+                        <div class="flex flex-col relative exp text-white/80">
+                            <div class="px-2">
+                                <p>SaaS for waste hauling companies, where I've built and maintained multiple critical features that have helped businesses service their clients.</p>
+                                <p>&#9679; <span class="pr-1 !h-0"></span>Route Management</p>
+                                <div class="hidden show-more-content text-sm mb-2 pl-6">
+                                    Used by dispatchers to create daily service routes for client orders used by their drivers. Including route optimization APIs, recurring services, auto dispatch and comprehensive route and stop management with draft support.
+                                </div>
+                                <p>&#9679; <span class="pr-1 !h-0"></span>Communications Center</p>
+                                <div class="hidden show-more-content text-sm mb-2 pl-6">
+                                    Used by the business's employees to communicate with their clients and drivers using SMS and phone calls. Handling thousands of calls weekly.
+                                    <br>
+                                    - Using Twilio I built the backend for a complete call center solution featuring queue management, call recording, 
+                                    live incall transcriptions, call routing to different departments and agents, call transfers, 
+                                    IVR module for creating custom menus callers go through, voicemail.
+                                    <br>
+                                    - Integrating Twilio's client SDK I built the frontend for answering and making calls. 
+                                    Implemented a custom websockets solution to synchronize realtime updates to the UI for calls and messages.
+                                    <br>
+                                    - Including other features like being able to answer a call while not even on the page, 
+                                    headset integration for allowing the use of call center type headset devices to answer calls.
+                                    <br>
+                                    - Most importantly, as being a critical feature for businesses to reliably communicate with their 
+                                    clients and not have a single dropped call or missed SMS, I implemented
+                                    complete logging and analytics solutions to help monitor and identify any issues as well as complete end to end testing
+                                    of the entire calling system.
+                                </div>
+                                <p>&#9679; <span class="pr-1 !h-0"></span>Slack like team communication</p>
+                                <div class="hidden show-more-content text-sm mb-2 pl-6">
+                                    Implemented a completely Slack like solution for team communication using LiveKit with features like realtime direct messages and
+                                    calls to team members, channels for group chats and huddles for multi member calls.
+                                </div>
+                                <div class="show-more text-xs text-white/60 group-hover:block cursor-pointer">
+                                    Show More
+                                </div>
+                                <div class="hidden show-more-content mt-2">
+                                    <div class="flex flex-col gap-1 mt-2">
+                                        <span class="font-bold text-md">Stack:</span>
+                                        <span class="text-xs">TypeScript, Express, PostgreSQL, Inngest, Twilio, LiveKit</span>
+                                        <span class="text-xs">React, Tanstack</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <div class="flex flex-col w-full">
                         <div class="flex w-full justify-between text-white max-xs:flex-col">
                             <span class="font-bold">Lead Engineer</span>
@@ -1098,7 +1151,7 @@
                                     href="https://www.linkedin.com/company/prodigy9/mycompany/"
                                     target="_blank">PRODIGY9</a>, Thailand</span>
                         </div>
-                        <div class="text-white/60 mb-1 text-xs">August 2021 - Present (fully remote)</div>
+                        <div class="text-white/60 mb-1 text-xs">August 2021 - July 2024 (fully remote)</div>
                         <div class="flex flex-col relative exp text-white/80">
                             <div class="px-2">
                                 <p>&#9679; <span class="pr-1 !h-0"></span> Lead client communications and understand
@@ -1341,8 +1394,10 @@
 <script>
     document.querySelectorAll('.show-more').forEach(el => {
         el.addEventListener('click', (e) => {
-            const content = e.target.nextElementSibling;
-            content.classList.remove('hidden');
+            const contents = e.target.parentElement.querySelectorAll('.show-more-content');
+            contents.forEach(content => {
+                content.classList.remove('hidden');
+            });
             e.target.classList.add('hidden');
             e.target.classList.remove('group-hover:block');
         });
