@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apostol Marinov — Senior Software Engineer</title>
+    <style>
+        :root {
+            --ink: #1c2330;
+            --muted: #5b6472;
+            --faint: #8a93a1;
+            --accent: #2f5d8a;
+            --line: #d8dde4;
+            --tint: #f4f6f9;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        @page {
+            size: A4;
+            margin: 0;
+        }
+
+        html,
+        body {
+            font-family: -apple-system, "Helvetica Neue", Arial, sans-serif;
+            color: var(--ink);
+            background: #fff;
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+            font-size: 9.1px;
+            line-height: 1.42;
+        }
+
+        .page {
+            width: 210mm;
+            min-height: 297mm;
+            padding: 11mm 12mm 9mm;
+            margin: 0 auto;
+        }
+
+        /* ---------- Header ---------- */
+        header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding-bottom: 9px;
+            border-bottom: 2px solid var(--ink);
+        }
+
+        .photo {
+            width: 74px;
+            height: 74px;
+            border-radius: 50%;
+            object-fit: cover;
+            flex-shrink: 0;
+            border: 1px solid var(--line);
+        }
+
+        .head-main {
+            flex-grow: 1;
+        }
+
+        .head-main h1 {
+            font-size: 23px;
+            font-weight: 700;
+            letter-spacing: 0.3px;
+            line-height: 1.1;
+        }
+
+        .head-main .role {
+            font-size: 11.5px;
+            font-weight: 600;
+            color: var(--accent);
+            margin-top: 2px;
+            text-transform: uppercase;
+            letter-spacing: 1.4px;
+        }
+
+        .contacts {
+            margin-top: 6px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4px 14px;
+            color: var(--muted);
+            font-size: 9.3px;
+        }
+
+        .contacts a {
+            color: var(--muted);
+            text-decoration: none;
+        }
+
+        .contacts .sep {
+            color: var(--line);
+        }
+
+        /* ---------- Layout ---------- */
+        .body {
+            display: flex;
+            gap: 18px;
+            margin-top: 11px;
+        }
+
+        .sidebar {
+            width: 36%;
+            flex-shrink: 0;
+        }
+
+        .main {
+            width: 64%;
+        }
+
+        section {
+            margin-bottom: 13px;
+        }
+
+        h2 {
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.6px;
+            color: var(--ink);
+            padding-bottom: 3px;
+            margin-bottom: 7px;
+            border-bottom: 1px solid var(--line);
+        }
+
+        /* ---------- Strengths ---------- */
+        .strength {
+            margin-bottom: 7px;
+        }
+
+        .strength .t {
+            font-weight: 700;
+            color: var(--ink);
+            font-size: 9.4px;
+        }
+
+        .strength .d {
+            color: var(--muted);
+            font-size: 8.7px;
+            line-height: 1.38;
+        }
+
+        /* ---------- Tech ---------- */
+        .tech-row {
+            margin-bottom: 6px;
+        }
+
+        .tech-row .label {
+            font-weight: 700;
+            color: var(--accent);
+            font-size: 8.5px;
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
+            margin-bottom: 3px;
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 3px;
+        }
+
+        .tag {
+            background: var(--tint);
+            border: 1px solid var(--line);
+            border-radius: 3px;
+            padding: 1.5px 5px;
+            font-size: 8.4px;
+            color: var(--ink);
+            white-space: nowrap;
+        }
+
+        .tag.lead {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: #fff;
+            font-weight: 600;
+        }
+
+        /* ---------- Education / Languages ---------- */
+        .edu .deg {
+            font-weight: 700;
+            font-size: 9.2px;
+        }
+
+        .edu .uni {
+            color: var(--muted);
+            font-size: 8.7px;
+        }
+
+        .lang {
+            display: flex;
+            gap: 14px;
+            font-size: 9px;
+        }
+
+        .lang b {
+            font-weight: 700;
+        }
+
+        .lang span {
+            color: var(--muted);
+        }
+
+        /* ---------- Profile ---------- */
+        .profile {
+            color: var(--muted);
+            font-size: 9.2px;
+            line-height: 1.5;
+        }
+
+        /* ---------- Experience ---------- */
+        .job {
+            margin-bottom: 9px;
+        }
+
+        .job-head {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 8px;
+        }
+
+        .job-head .title {
+            font-weight: 700;
+            font-size: 9.7px;
+            color: var(--ink);
+        }
+
+        .job-head .co {
+            color: var(--accent);
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .job-head .co:hover {
+            text-decoration: underline;
+        }
+
+        .job-head .date {
+            color: var(--faint);
+            font-size: 8.4px;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+
+        .job .desc {
+            color: var(--muted);
+            font-size: 8.9px;
+            margin-top: 2px;
+            line-height: 1.42;
+        }
+
+        .job .stack {
+            color: var(--faint);
+            font-size: 8.3px;
+            margin-top: 2px;
+        }
+
+        .job .stack b {
+            color: var(--muted);
+            font-weight: 700;
+        }
+
+        .compact .job {
+            margin-bottom: 5px;
+        }
+
+        .compact .desc {
+            margin-top: 1px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page">
+        <header>
+            <img class="photo" src="me.webp" alt="Apostol Marinov">
+            <div class="head-main">
+                <h1>Apostol Marinov</h1>
+                <div class="role">Senior Software Engineer</div>
+                <div class="contacts">
+                    <a href="mailto:apomarinov@gmail.com">apomarinov@gmail.com</a>
+                    <span class="sep">|</span>
+                    <a href="https://www.linkedin.com/in/apomarinov/">linkedin.com/in/apomarinov</a>
+                    <span class="sep">|</span>
+                    <span>Bulgaria</span>
+                    <span class="sep">|</span>
+                    <a href="https://workio.sh/">workio.sh</a>
+                </div>
+            </div>
+        </header>
+
+        <div class="body">
+            <!-- ============ SIDEBAR ============ -->
+            <aside class="sidebar">
+                <section>
+                    <h2>Technologies</h2>
+                    <div class="tech-row">
+                        <div class="label">Daily</div>
+                        <div class="tags">
+                            <span class="tag lead">Claude/Codex</span>
+                            <span class="tag lead">TypeScript</span>
+                            <span class="tag lead">React</span>
+                            <span class="tag lead">PostgreSQL</span>
+                            <span class="tag lead">Vitest</span>
+                        </div>
+                    </div>
+                    <div class="tech-row">
+                        <div class="label">Frequent · owned products</div>
+                        <div class="tags">
+                            <span class="tag">Redis</span>
+                            <span class="tag">Twilio</span>
+                            <span class="tag">OpenAI API</span>
+                            <span class="tag">LiveKit</span>
+                            <span class="tag">WebSockets</span>
+                        </div>
+                    </div>
+                    <div class="tech-row">
+                        <div class="label">Also experienced with</div>
+                        <div class="tags">
+                            <span class="tag">JavaScript</span>
+                            <span class="tag">PHP</span>
+                            <span class="tag">Golang</span>
+                            <span class="tag">Ruby</span>
+                            <span class="tag">Node / Express</span>
+                            <span class="tag">Next.js</span>
+                            <span class="tag">Vue.js</span>
+                            <span class="tag">Svelte</span>
+                            <span class="tag">Astro</span>
+                            <span class="tag">Laravel</span>
+                            <span class="tag">Rails</span>
+                            <span class="tag">WordPress</span>
+                            <span class="tag">Socket.io</span>
+                            <span class="tag">Inngest</span>
+                            <span class="tag">TanStack</span>
+                            <span class="tag">MySQL</span>
+                            <span class="tag">MongoDB</span>
+                            <span class="tag">ElasticSearch</span>
+                            <span class="tag">Neo4j</span>
+                            <span class="tag">Docker</span>
+                            <span class="tag">AWS</span>
+                            <span class="tag">GCP</span>
+                            <span class="tag">Terraform</span>
+                            <span class="tag">GitHub Actions</span>
+                            <span class="tag">CircleCI</span>
+                            <span class="tag">Playwright</span>
+                            <span class="tag">Jest</span>
+                            <span class="tag">PHPUnit</span>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="edu">
+                    <h2>Education</h2>
+                    <div class="deg">BSc, Computer Systems &amp; Technologies</div>
+                    <div class="uni">Technical University of Gabrovo</div>
+                </section>
+
+                <section>
+                    <h2>Languages</h2>
+                    <div class="lang">
+                        <div><b>English</b> <span>— Fluent</span></div>
+                        <div><b>Thai</b> <span>— Conversational</span></div>
+                    </div>
+                </section>
+
+                <section>
+                    <h2>Core Strengths</h2>
+                    <div class="strength">
+                        <div class="t">System Re-architecture &amp; Modernization</div>
+                        <div class="d">Turn fragile, hard-to-maintain systems into clean, scalable and extensible
+                            architectures.</div>
+                    </div>
+                    <div class="strength">
+                        <div class="t">Reliability &amp; Fault Tolerance</div>
+                        <div class="d">Design multi-tier fallback and redundancy so mission-critical systems never drop a
+                            request under load or failure.</div>
+                    </div>
+                    <div class="strength">
+                        <div class="t">AI Engineering</div>
+                        <div class="d">Build production AI agents for voice, SMS and chat, with evaluation and
+                            prompt-optimization pipelines for non-deterministic behavior.</div>
+                    </div>
+                    <div class="strength">
+                        <div class="t">Testing Complex Systems</div>
+                        <div class="d">Build custom frameworks to end-to-end test integrations and multi-turn AI on CI
+                            where off-the-shelf tools fall short.</div>
+                    </div>
+                    <div class="strength">
+                        <div class="t">Cost Optimization</div>
+                        <div class="d">Re-engineer cloud and third-party API usage to cut operating costs dramatically,
+                            often to near zero.</div>
+                    </div>
+                    <div class="strength">
+                        <div class="t">Realtime Systems &amp; Observability</div>
+                        <div class="d">Low-latency chat, calls, video and screen sharing, instrumented with lifecycle
+                            logging and analytics dashboards.</div>
+                    </div>
+                    <div class="strength">
+                        <div class="t">Rapid Domain Ownership</div>
+                        <div class="d">Take over unfamiliar domains and codebases after hand-offs, become productive fast
+                            and scale throughput by orders of magnitude.</div>
+                    </div>
+                    <div class="strength">
+                        <div class="t">Leadership &amp; Client Communication</div>
+                        <div class="d">Lead client communication, translate needs into solutions and delegate delivery
+                            across teams.</div>
+                    </div>
+                </section>
+
+            </aside>
+
+            <!-- ============ MAIN ============ -->
+            <main class="main">
+                <section>
+                    <h2>Profile</h2>
+                    <p class="profile">Senior full-stack engineer with a decade of experience across waste-hauling SaaS,
+                        real-estate, hospitality, healthcare and digital products. I specialize in taking ownership of
+                        complex or inherited systems — re-architecting them for reliability and scale, building the AI
+                        and realtime features on top, and driving operating costs down in the process.</p>
+                </section>
+
+                <section>
+                    <h2>Project</h2>
+                    <div class="job">
+                        <div class="job-head">
+                            <div class="title"><a class="co" href="https://workio.sh/" target="_blank">WorkIO</a> —
+                                Creator · Open Source</div>
+                            <div class="date"><a href="https://workio.sh/" target="_blank"
+                                    style="color:var(--faint);text-decoration:none">workio.sh</a></div>
+                        </div>
+                        <div class="desc">A self-hosted developer workspace that unifies terminals, GitHub, git and
+                            <b>live Claude Code AI-session monitoring</b> into one screen — designed and built solo to
+                            streamline my own AI-assisted workflow. Features realtime sync, full-text search across AI
+                            session history, a universal command palette and an installable mobile PWA.</div>
+                        <div class="stack"><b>Stack:</b> React 19, TypeScript, Fastify, PostgreSQL, Socket.IO, xterm.js,
+                            Python</div>
+                    </div>
+                </section>
+
+                <section>
+                    <h2>Work Experience</h2>
+
+                    <div class="job">
+                        <div class="job-head">
+                            <div class="title">Senior Full Stack Engineer · <a class="co"
+                                    href="https://trashlab.com/" target="_blank">TrashLab</a>, USA</div>
+                            <div class="date">Jul 2024 – Present · Remote</div>
+                        </div>
+                        <div class="desc">SaaS for waste-hauling companies. Built and own several critical features:
+                            an <b>AI Communications Center</b> (Twilio + OpenAI) re-architected from a fragile setup into
+                            a resilient call center with multi-tier fallback, IVR, queues and recording — scaled from a
+                            few hundred to <b>10,000+ calls/week</b>; a <b>LiveKit Slack/Meet
+                            clone</b> with realtime chat, huddles, video and screen sharing; <b>route management</b> with
+                            optimization and auto-dispatch; and a <b>QuickBooks Online &amp; Desktop</b> integration.
+                            Built custom AI conversation-eval and prompt-optimization tooling plus real-world E2E call
+                            tests on CI; cut vendor API spend dramatically by mirroring data and replacing realtime
+                            usage with Socket.io.</div>
+                        <div class="stack"><b>Stack:</b> TypeScript, React, PostgreSQL, Express, Inngest, Twilio,
+                            LiveKit, OpenAI, Redis, Socket.io</div>
+                    </div>
+
+                    <div class="job">
+                        <div class="job-head">
+                            <div class="title">Lead Engineer · <a class="co"
+                                    href="https://www.linkedin.com/company/prodigy9/mycompany/" target="_blank">PRODIGY9</a>,
+                                Thailand</div>
+                            <div class="date">Aug 2021 – Jul 2024 · Remote</div>
+                        </div>
+                        <div class="desc">Led client communication and product system design across projects, bridging
+                            client teams and my own. Researched and selected technologies, identified bottlenecks,
+                            designed solutions and delegated delivery — whether starting greenfield or joining
+                            mid-cycle and adapting quickly to new stacks.</div>
+                        <div class="stack"><b>Stack:</b> TypeScript, PHP, Golang, Ruby on Rails, PostgreSQL, Next.js,
+                            Svelte, Astro, Docker, AWS, GCP</div>
+                    </div>
+
+                    <div class="job">
+                        <div class="job-head">
+                            <div class="title">Full Stack Developer · <a class="co"
+                                    href="https://www.linkedin.com/company/fazwaz/" target="_blank">FazWaz</a>, Thailand</div>
+                            <div class="date">Aug 2020 – Aug 2021</div>
+                        </div>
+                        <div class="desc">Improved a high-traffic, SEO-focused property portal with new features while
+                            preserving top performance scores; processed and restructured a large property dataset while
+                            maintaining data integrity across the system.</div>
+                        <div class="stack"><b>Stack:</b> PHP, MySQL, Vue.js, Laravel, Docker, GCP</div>
+                    </div>
+
+                    <div class="job">
+                        <div class="job-head">
+                            <div class="title">Full Stack Developer · <a class="co"
+                                    href="https://www.linkedin.com/company/redplanethotels/" target="_blank">Red Planet
+                                    Hotels</a>, Thailand</div>
+                            <div class="date">Apr 2020 – Jul 2020</div>
+                        </div>
+                        <div class="desc">Implemented 3DS verification into a large legacy hotel-booking payments system
+                            and supported internal projects, third-party integrations and server tools.</div>
+                        <div class="stack"><b>Stack:</b> JavaScript, PHP, MySQL, Laravel, React, AWS</div>
+                    </div>
+
+                    <div class="job">
+                        <div class="job-head">
+                            <div class="title">Backend Developer · <span class="co">Radius</span>, Thailand</div>
+                            <div class="date">Jul 2019 – Apr 2020</div>
+                        </div>
+                        <div class="desc">Built and led a complete rebuild of a Golang API for a student-communications
+                            iOS app, working closely with mobile developers and testers.</div>
+                        <div class="stack"><b>Stack:</b> Golang, MongoDB, ElasticSearch, GCP</div>
+                    </div>
+
+                    <div class="job">
+                        <div class="job-head">
+                            <div class="title">Backend Developer · <a class="co"
+                                    href="https://www.linkedin.com/company/credoweb/" target="_blank">Credoweb</a>, Bulgaria</div>
+                            <div class="date">Jun 2016 – Jul 2019</div>
+                        </div>
+                        <div class="desc">Built the PHP backend for an international medical social network, serving web,
+                            Android and iOS clients via GraphQL and collaborating with frontend, mobile and DevOps teams.
+                        </div>
+                        <div class="stack"><b>Stack:</b> PHP, MySQL, ElasticSearch, Neo4j, Docker</div>
+                    </div>
+
+                    <div class="compact">
+                        <div class="job">
+                            <div class="job-head">
+                                <div class="title">Game Developer · <span class="co">Masthead Studios</span>, Bulgaria
+                                </div>
+                                <div class="date">Nov 2015 – May 2016</div>
+                            </div>
+                            <div class="desc">Built a controller-driven UI system for a PC game in the Unity3D engine.
+                            </div>
+                        </div>
+
+                        <div class="job">
+                            <div class="job-head">
+                                <div class="title">Full Stack Developer · <a class="co"
+                                        href="https://www.linkedin.com/company/melon-ad/" target="_blank">Melon</a>, Bulgaria</div>
+                                <div class="date">Jul 2015 – Oct 2015</div>
+                            </div>
+                            <div class="desc">Built a KPI tracking system for production-sector employees (CakePHP +
+                                AngularJS); worked with Magento and Symfony.</div>
+                        </div>
+
+                        <div class="job">
+                            <div class="job-head">
+                                <div class="title">Full Stack Developer · <a class="co"
+                                        href="https://www.linkedin.com/company/interactive-share-ltd/"
+                                        target="_blank">Interactive Share</a>, Bulgaria</div>
+                                <div class="date">Jun 2014 – Jun 2015</div>
+                            </div>
+                            <div class="desc">First professional role — built Facebook apps, landing pages and client
+                                websites with PHP, MySQL and AngularJS/jQuery.</div>
+                        </div>
+                    </div>
+                </section>
+            </main>
+        </div>
+    </div>
+    <script>
+        // Auto-open the browser's print / "Save as PDF" dialog ONLY when the page
+        // is opened with ?print=1 — so plain viewing/editing isn't interrupted.
+        if (new URLSearchParams(location.search).get('print') === '1') {
+            window.addEventListener('load', function () {
+                // Small delay so layout & the webp image are fully painted first.
+                setTimeout(function () { window.print(); }, 300);
+            });
+        }
+    </script>
+</body>
+
+</html>
